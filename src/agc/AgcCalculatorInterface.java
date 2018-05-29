@@ -1,4 +1,4 @@
-//hola jeje
+//hola 
 package agc;
 //Comment
 import agc.exceptions.*;
