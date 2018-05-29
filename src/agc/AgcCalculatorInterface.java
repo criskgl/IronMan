@@ -20,5 +20,9 @@ public interface AgcCalculatorInterface {
 	// FinalInstant represents AGC -RF-02-E3
 	// AGCException represents AGC -RF-02-S2
 
+	DistByAxes CalculateDist(String InputFile, int FinalInstant) throws AGCException;
+
+	VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException;
+
 	
 }

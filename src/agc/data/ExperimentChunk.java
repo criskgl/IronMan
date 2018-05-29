@@ -14,9 +14,12 @@ public class ExperimentChunk {
 	private double accel_x;
 	private double accel_y;
 	private double accel_z;
+	private double latitude;
+	private double longitude;
+	
 
 	// Effort spent: 3 minutos
-	public ExperimentChunk(Date time, double gyro_x, double gyro_y, double gyro_z, double accel_x, double accel_y, double accel_z) {
+	public ExperimentChunk(Date time, double gyro_x, double gyro_y, double gyro_z, double accel_x, double accel_y, double accel_z, double longitude, double latitude) {
 		this.time = time;
 		this.gyro_x = gyro_x;
 		this.gyro_y = gyro_y;
@@ -24,6 +27,8 @@ public class ExperimentChunk {
 		this.accel_x = accel_x;
 		this.accel_y = accel_y;
 		this.accel_z = accel_z;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	
 	public Date getTime() {
@@ -53,9 +58,17 @@ public class ExperimentChunk {
 	public double getAccel_z() {
 		return accel_z;
 	}
+	
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
 
 	
-	// Effort spent: 12 minutos
+	// Effort spent: 15 minutos
 	@Override
 	public String toString() {
 		String result = "";
@@ -66,7 +79,9 @@ public class ExperimentChunk {
 		result += "GYRO_Z: " + gyro_z + "\n";
 		result += "ACCEL_X: " + accel_x + "\n";
 		result += "ACCEL_Y: " + accel_y + "\n";
-		result += "ACCEL_Z: " + accel_z;
+		result += "ACCEL_Z: " + accel_z +  "\n";
+		result += "LATITUDE: " + latitude + "\n";
+		result += "LONGITUDE: " + longitude;
 		return result;
 	}
 

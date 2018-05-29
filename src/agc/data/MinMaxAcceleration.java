@@ -1,6 +1,6 @@
 package agc.data;
 
- class MinMaxAcceleration {
+ public class MinMaxAcceleration {
 	double minAcceleration;
 	double maxAcceleration;
 		

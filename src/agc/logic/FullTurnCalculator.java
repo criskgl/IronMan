@@ -15,7 +15,6 @@ public class FullTurnCalculator implements Calculator {
 		// We do not consider the initial sample, as it is the initial position from the gyroscope
 		ExperimentChunk previousChunk = myExperiment.getItem(myExperiment.getSubExperimentInitialItem());
 		double xValue = 0, yValue = 0, zValue = 0;
-		
 		// Skip to next element to process the remaining values 
 		for (int i=myExperiment.getSubExperimentInitialItem()+1; i<myExperiment.getSubExperimentFinalItem(); i++){
 			ExperimentChunk currentChunk = myExperiment.getItem(i);
