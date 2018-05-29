@@ -6,6 +6,9 @@
 				 "LONGITUD":49.7838993,
 				 "ACCEL_X":,
 				 "ACCEL_Y":2.2124,
-				 "ACCEL_Z":3.339
+				 "ACCEL_Z":3.339,
+				 "GYRO_X":1.040,
+				 "GYRO_Y":8.080,
+				 "GYRO_Z":20.832
 			 }
 		]
