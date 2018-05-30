@@ -56,10 +56,10 @@ public class DistByAxes {
 				+ "\t}\n"
 				+ "}";
 	}
-	
+	// Effort spent: 10 minutes
 	public void PrintToJsonFile(String result) throws IOException{
 		
-		try (FileWriter file = new FileWriter("result.json")) {
+		try (FileWriter file = new FileWriter("DISTANCE.json")) {
 			file.write(result.toString());
 			System.out.println("Successfully Copied JSON Object to File...");
 		}

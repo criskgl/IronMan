@@ -56,7 +56,7 @@ public class VelByAxes {
 				+ "\t}\n"
 				+ "}";
 	}
-	
+	// Effort spent: 1 minutes
 	public void PrintToJsonFile(String result) throws IOException{
 		
 		try (FileWriter file = new FileWriter("SPEED.json")) {
