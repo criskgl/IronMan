@@ -48,5 +48,4 @@ public class MinMaxAccelerationCalculator implements Calculator {
 		AccelerationByAxes result = new AccelerationByAxes(minx, maxx, miny, maxy, minz, maxz);		
 		return result;
 	}
-
 }

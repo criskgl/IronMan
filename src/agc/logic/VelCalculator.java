@@ -8,7 +8,7 @@ import agc.exceptions.AGCException;
 
 public class VelCalculator implements Calculator {
 
-	// Effort spent: 38 minutos
+	// Effort spent: 45 minutos
 	@Override
 	public Object Calculate(Object obj) throws AGCException {
 		Experiment myExperiment= (Experiment)obj;
@@ -73,11 +73,9 @@ public class VelCalculator implements Calculator {
 			sum_var_media_z = sum_var_media_z + Math.pow(myDoubleArrayz[i] - speedz, 2);
 			
 		}
-		
 		varx = sum_var_media_x/cont;
 		vary = sum_var_media_y/cont;
 		varz = sum_var_media_z/cont;
-		
 		
 		VelByAxes result = new VelByAxes(speedx, varx, speedy, vary, speedz, varz);		
 		return result;
