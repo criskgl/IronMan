@@ -52,7 +52,7 @@ public class AGCManager implements AgcCalculatorInterface {
 	}
 	
 	@Override
-	// Effort spent : 192 minutes 
+	// Effort spent : 184 minutes 
 	public VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException {
 		ExperimentDataFileManager myDataManager = new ExperimentDataFileManager();
 		Experiment myExperiment = myDataManager.Parse(InputFile);		
