@@ -1,6 +1,5 @@
 package agc.logic;
 
-import agc.data.AccelerationByAxes;
 import agc.data.Experiment;
 import agc.data.ExperimentChunk;
 import agc.data.VelByAxes;

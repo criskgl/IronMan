@@ -2,6 +2,9 @@
 package agc;
 //Comment
 import agc.exceptions.*;
+
+import java.io.IOException;
+
 import agc.data.*;
 
 public interface AgcCalculatorInterface {
@@ -20,8 +23,8 @@ public interface AgcCalculatorInterface {
 	// FinalInstant represents AGC -RF-02-E3
 	// AGCException represents AGC -RF-02-S2
 
-	DistByAxes CalculateDist(String InputFile, int FinalInstant) throws AGCException;
+	void CalculateDist(String InputFile, int FinalInstant) throws AGCException, IOException;
 
-	VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException;
+	void CalculateVel(String InputFile, int FinalInstant) throws AGCException, IOException;
 	
 }

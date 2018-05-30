@@ -3,7 +3,6 @@ package agc.logic;
 import agc.data.ExperimentChunk;
 import agc.data.DistByAxes;
 import agc.data.Experiment;
-import agc.data.FullTurnByAxes;
 import agc.exceptions.AGCException;
 
 public class DistanceCalculator implements Calculator {

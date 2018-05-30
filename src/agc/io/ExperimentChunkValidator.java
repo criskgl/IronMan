@@ -137,7 +137,7 @@ public class ExperimentChunkValidator {
 		}
 		return value;
 	}
-	
+	// Effort spent: 10 minutos
 	private  double processNumberForLabel7Decimals(String label, JsonObject element) throws AGCException {
 		double value;
 		try {
@@ -173,7 +173,7 @@ public class ExperimentChunkValidator {
 		return true;
 	}
 	
-	// Effort spent: 17 minutos
+	// Effort spent: 4 minutos
 	// This method checks if a number has at least 7 decimals
 	private boolean hasAtLeastSevenDecimals(String input) throws AGCException {
 		int pos = input.lastIndexOf('.');

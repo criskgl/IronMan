@@ -1,5 +1,7 @@
 package agc;
 
+import java.io.IOException;
+
 import agc.data.AccelerationByAxes;
 import agc.data.DistByAxes;
 import agc.data.Experiment;
@@ -41,25 +43,28 @@ public class AGCManager implements AgcCalculatorInterface {
 	
 	@Override
 	// Effort spent : 120 minutes
-	public DistByAxes CalculateDist(String InputFile, int FinalInstant) throws AGCException {
+	public void CalculateDist(String InputFile, int FinalInstant) throws AGCException, IOException {
 		ExperimentDataFileManager myDataManager = new ExperimentDataFileManager();
 		Experiment myExperiment = myDataManager.Parse(InputFile);		
 		myExperiment.identifySubExperiment(0, FinalInstant);
 		
 		Calculator myCalculator = new DistanceCalculator ();
 		DistByAxes result = (DistByAxes) myCalculator.Calculate(myExperiment);
-		return result;		
+		
+		result.PrintToJsonFile(result.toString());
+		
 	}
 	
 	@Override
 	// Effort spent : 184 minutes 
-	public VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException {
+	public void CalculateVel(String InputFile, int FinalInstant) throws AGCException, IOException {
 		ExperimentDataFileManager myDataManager = new ExperimentDataFileManager();
 		Experiment myExperiment = myDataManager.Parse(InputFile);		
 		myExperiment.identifySubExperiment(0, FinalInstant);
 		
 		Calculator myCalculator = new VelCalculator ();
 		VelByAxes result = (VelByAxes) myCalculator.Calculate(myExperiment);
-		return result;
+		
+		result.PrintToJsonFile(result.toString());
 	}
 }

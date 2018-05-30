@@ -1,5 +1,10 @@
 package agc.data;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
+import agc.exceptions.AGCException;
+
 public class DistByAxes {
 	private double Dist_X;
 	private double Dist_Y;
@@ -17,7 +22,7 @@ public class DistByAxes {
 		return Dist_Z;
 	}
 	
-	// Effort spent: 3 minutes
+	// Effort spent: 4 minutes
 	public DistByAxes ()
 	{
 		this.Dist_X = 0.0d;
@@ -25,7 +30,7 @@ public class DistByAxes {
 		this.Dist_Z = 0.0d;
 	}
 	
-	// Effort spent: 4 minutes
+	// Effort spent: 5 minutes
 	public DistByAxes (double xValue, double yValue, double zValue)
 	{
 		this.Dist_X = xValue;
@@ -34,7 +39,7 @@ public class DistByAxes {
 	}
 	
 	@Override
-	// Effort spent: 8 minutes
+	// Effort spent: 4 minutes
 	public String toString() {
 		return "{\n"
 				+ "\t\"X_Axis\":\n"
@@ -50,5 +55,14 @@ public class DistByAxes {
 				+ "\t\t\"Dist\": "+ Dist_Z + "\n"
 				+ "\t}\n"
 				+ "}";
+	}
+	
+	public void PrintToJsonFile(String result) throws IOException{
+		
+		try (FileWriter file = new FileWriter("result.json")) {
+			file.write(result.toString());
+			System.out.println("Successfully Copied JSON Object to File...");
+		}
+		
 	}
 }

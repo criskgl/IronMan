@@ -1,5 +1,8 @@
 package agc.data;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class VelByAxes {
 	private VelDesvValues x_Axis;
 	private VelDesvValues y_Axis;
@@ -16,7 +19,7 @@ public class VelByAxes {
 	}
 
 
-	// Effort spent: 5 minutes
+	// Effort spent: 4 minutes
 	public VelByAxes ()
 	{
 		this.x_Axis = new VelDesvValues ();
@@ -24,7 +27,7 @@ public class VelByAxes {
 		this.z_Axis = new VelDesvValues ();
 	}
 
-	// Effort spent: 5 minutes
+	// Effort spent: 10 minutes
 	public VelByAxes (double xSpeedValue, double xDesvValue, double ySpeedValue, double yDesvValue, double zSpeedValue, double zDesvValue)
 	{
 		this.x_Axis = new VelDesvValues (xSpeedValue, xDesvValue);
@@ -33,7 +36,7 @@ public class VelByAxes {
 	}
 	
 	@Override
-	// Effort spent: 9 minutes
+	// Effort spent: 8 minutes
 	public String toString() {
 		return "{\n"
 				+ "\t\"X_Axis\":\n"
@@ -52,5 +55,14 @@ public class VelByAxes {
 				+ "\t\t\"VAR Z\": "+ z_Axis.DesvValue + "\n"
 				+ "\t}\n"
 				+ "}";
+	}
+	
+	public void PrintToJsonFile(String result) throws IOException{
+		
+		try (FileWriter file = new FileWriter("SPEED.json")) {
+			file.write(result.toString());
+			System.out.println("Successfully Copied JSON Object to File...");
+		}
+		
 	}
 }

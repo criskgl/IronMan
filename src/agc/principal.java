@@ -15,19 +15,14 @@ public class principal {
 		// TODO Auto-generated method stub
 		
 		AGCManager experimento = new AGCManager();
-		
-		DistByAxes result = new DistByAxes();
-		result = experimento.CalculateDist("CP-RF1-01-FINAL.json", 20);
+		experimento.CalculateDist("CP-RF1-01-FINAL.json", 20);
 		
 		
 		
 		//System.out.println("velmedia: "+"\n"+result.getX_Axis().getspeedValue()+ "\n"+result.getY_Axis().getspeedValue()+ "\n"+result.getZ_Axis().getspeedValue());
 		//System.out.println("varianza: "+"\n"+result.getX_Axis().getDesvValue()+ "\n"+result.getY_Axis().getDesvValue()+ "\n"+result.getZ_Axis().getDesvValue());
 		
-		try (FileWriter file = new FileWriter("result.json")) {
-			file.write(result.toString());
-			System.out.println("Successfully Copied JSON Object to File...");
-		}
+
 
 	}
 
