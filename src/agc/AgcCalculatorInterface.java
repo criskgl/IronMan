@@ -23,6 +23,5 @@ public interface AgcCalculatorInterface {
 	DistByAxes CalculateDist(String InputFile, int FinalInstant) throws AGCException;
 
 	VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException;
-
 	
 }
