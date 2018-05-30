@@ -3,11 +3,11 @@ package agc.data;
  public class VelDesvValues {
 	double speedValue;
 	double DesvValue;
-		
+	// Effort spent: 1 minutes
 	public double getspeedValue() {
 		return speedValue;
 	}
-	
+	// Effort spent: 1 minutes
 	public double getDesvValue() {
 		return DesvValue;
 	}
