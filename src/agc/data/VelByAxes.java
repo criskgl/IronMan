@@ -59,7 +59,7 @@ public class VelByAxes {
 	// Effort spent: 1 minutes
 	public void PrintToJsonFile(String result) throws IOException{
 		
-		try (FileWriter file = new FileWriter("SPEED.json")) {
+		try (FileWriter file = new FileWriter("RESULT_SPEED.json")) {
 			file.write(result.toString());
 			System.out.println("Successfully Copied JSON Object to File...");
 		}

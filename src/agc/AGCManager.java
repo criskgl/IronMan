@@ -57,14 +57,14 @@ public class AGCManager implements AgcCalculatorInterface {
 	
 	@Override
 	// Effort spent : 184 minutes 
-	public void CalculateVel(String InputFile, int FinalInstant) throws AGCException, IOException {
+	public VelByAxes CalculateVel(String InputFile, int FinalInstant) throws AGCException, IOException {
 		ExperimentDataFileManager myDataManager = new ExperimentDataFileManager();
 		Experiment myExperiment = myDataManager.Parse(InputFile);		
 		myExperiment.identifySubExperiment(0, FinalInstant);
 		
 		Calculator myCalculator = new VelCalculator ();
 		VelByAxes result = (VelByAxes) myCalculator.Calculate(myExperiment);
-		
 		result.PrintToJsonFile(result.toString());
+		return result;
 	}
 }

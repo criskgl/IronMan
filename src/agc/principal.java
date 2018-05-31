@@ -15,21 +15,14 @@ public class principal {
 		// TODO Auto-generated method stub
 		
 		AGCManager experimento = new AGCManager();
-		experimento.CalculateDist("CP-RFG-18-FINAL.json", 20);
+		experimento.CalculateDist("CP-RFG-01-FINAL.json", 20);
 		
 		AGCManager experimento2 = new AGCManager();
-		experimento.CalculateVel("CP-RF1-01-FINAL.json", 20);
+		experimento2.CalculateVel("CP-RF4-01-FINAL.json", 20);
 		
-		
-		//System.out.println("velmedia: "+"\n"+result.getX_Axis().getspeedValue()+ "\n"+result.getY_Axis().getspeedValue()+ "\n"+result.getZ_Axis().getspeedValue());
-		//System.out.println("varianza: "+"\n"+result.getX_Axis().getDesvValue()+ "\n"+result.getY_Axis().getDesvValue()+ "\n"+result.getZ_Axis().getDesvValue());
-		
-
 
 	}
 
 }
 
 
-
-//C:\\Users\\guill\\Documents\\GitHub\\IronMan\\

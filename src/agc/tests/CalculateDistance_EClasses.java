@@ -64,8 +64,8 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		
 		try {
-			File file = new File("CP-RFG-02-FI.json");
-			agcc.CalculateDist("CP-RFG-02-FINAL.json", 40);
+			File file = new File("CP-RFG-02-FINAL.json");
+			agcc.CalculateDist("CP-RFG-02-FINAL.json", 20);
 			boolean ficheroOk = file.isFile();
 			
 			assertEquals(ficheroOk, true);//comprueba que el fichero existe
@@ -84,7 +84,7 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("CP-RF3-03-FINAL.json", 40);
+			agcc.CalculateDist("CP-RF3-03-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
@@ -215,7 +215,7 @@ public class CalculateDistance_EClasses {
 	/* Caso de Prueba: CP-RFG-11
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI17
 	* TÃ©cnica de prueba: Clase de Equivalencia
-	* Resultado Esperado: Se repiten campos de ACCEL para alguno de sus ejes en el fichero de entrada
+	* Resultado Esperado: de los 2 campos repetidos se escoge el segundo y se continua la ejecucion sin errores
 	*/
 	public void testCPRFG_11() throws IOException {
 		AGCManager agcc = new AGCManager();
@@ -225,7 +225,7 @@ public class CalculateDistance_EClasses {
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals(" ", message);
+		assertEquals("", message);
 	}
 	@Test
 	/* Caso de Prueba: CP-RFG-12
@@ -351,13 +351,12 @@ public class CalculateDistance_EClasses {
 	*/
 	public void testCPRF3_01() throws IOException, AGCException {
 		AGCManager agcc = new AGCManager();
-		String message = "";
 	
 		DistByAxes result = agcc.CalculateDist("CP-RF3-01-FINAL.json",  20);
 
-		assertEquals( 60.0 , result.getDist_X(), 0.001f);
-		assertEquals( 0.0017 , result.getDist_Y(), 0.001f);
-		assertEquals( 0.0026 , result.getDist_Z(), 0.001f);
+		assertEquals( 60.0f , result.getDist_X(), 0.001f);
+		assertEquals( 0.001f , result.getDist_Y(), 0.001f);
+		assertEquals( 0.002f , result.getDist_Z(), 0.001f);
 	}
 	
 	@Test
@@ -366,19 +365,11 @@ public class CalculateDistance_EClasses {
 	* TÃ©cnica de prueba: Clases de Equivalencia  
 	* Resultado Esperado: Fichero de salida con sintaxis JSON incorrecta para distancia respecto a cada eje
 	*/
-	public void testCPRF3_02() throws IOException {
+	public void testCPRF3_02() throws IOException, AGCException {
 		AGCManager agcc = new AGCManager();
-		String message = "";
-		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RF3-02-FINAL.json",  20);
-		} catch (AGCException ex) {
-			message = ex.getMessage();
-		}
 		
-		JSONObject data = getRESTData("DIST.json");
-		JSONAssert.assertEquals(
-				  "{foo: 'bar', baz: 'qux'}",
-				  JSONObject.fromObject("{foo: 'bar', baz: 'xyzzy'}"));
+			agcc.CalculateDist("CP-RF3-02-FINAL.json",  20);
+
 	}
 	
 
