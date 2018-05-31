@@ -43,15 +43,15 @@ public class AGCManager implements AgcCalculatorInterface {
 	
 	@Override
 	// Effort spent : 120 minutes
-	public void CalculateDist(String InputFile, int FinalInstant) throws AGCException, IOException {
+	public DistByAxes CalculateDist(String InputFile, int FinalInstant) throws AGCException, IOException {
 		ExperimentDataFileManager myDataManager = new ExperimentDataFileManager();
 		Experiment myExperiment = myDataManager.Parse(InputFile);		
 		myExperiment.identifySubExperiment(0, FinalInstant);
 		
 		Calculator myCalculator = new DistanceCalculator ();
 		DistByAxes result = (DistByAxes) myCalculator.Calculate(myExperiment);
-		
 		result.PrintToJsonFile(result.toString());
+		return result;
 		
 	}
 	

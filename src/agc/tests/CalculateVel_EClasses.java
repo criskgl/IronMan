@@ -48,7 +48,7 @@ public class CalculateVel_EClasses {
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: invalid path", message);
+		assertEquals("Error: could not read data from input file.", message);
 	}
 	
 	@Test
@@ -61,8 +61,8 @@ public class CalculateVel_EClasses {
 		AGCManager agcc = new AGCManager();
 		
 		try {
-			File file = new File("/PDS-P3/tests-json/CE-y-VL/CP-RFG-02.json");
-			agcc.CalculateVel("/PDS-P3/tests-json/CE-y-VL/CP-RFG-02-FINAL.json", 40);
+			File file = new File("CP-RFG-02.json");
+			agcc.CalculateVel("CP-RFG-02-FINAL.json", 40);
 			boolean ficheroOk = file.isFile();
 			
 			assertEquals(ficheroOk, true);//comprueba que el fichero existe
@@ -73,7 +73,7 @@ public class CalculateVel_EClasses {
 
 	@Test
 	/* Caso de Prueba: CP-RFG-03
-	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI4
+	* Clase de Equivalencia o Valor Límite Asociado: CEI4
 	* TÃ©cnica de prueba: Clases de Equivalencia  
 	* Resultado Esperado: Mensaje de error de sintaxis.  
 	*/
@@ -85,7 +85,7 @@ public class CalculateVel_EClasses {
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: invalid input file syntax", message);
+		assertEquals("Error: could not read data from input file.", message);
 	}
 
 	@Test

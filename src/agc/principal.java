@@ -15,7 +15,7 @@ public class principal {
 		// TODO Auto-generated method stub
 		
 		AGCManager experimento = new AGCManager();
-		experimento.CalculateDist("CP-RF1-01-FINAL.json", 20);
+		experimento.CalculateDist("CP-RFG-18-FINAL.json", 20);
 		
 		AGCManager experimento2 = new AGCManager();
 		experimento.CalculateVel("CP-RF1-01-FINAL.json", 20);

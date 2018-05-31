@@ -13,9 +13,12 @@ import org.junit.Test;
 
 import agc.AGCManager;
 import agc.data.AccelerationByAxes;
+import agc.data.DistByAxes;
 import agc.data.FullTurnByAxes;
 import agc.exceptions.AGCException;
 
+
+import java.lang.Object;
 public class CalculateDistance_EClasses {
 
 	@BeforeClass
@@ -44,25 +47,25 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("", 40);
+			agcc.CalculateDist("CP-RFG-00", 40);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: invalid path", message);
+		assertEquals("Error: could not read data from input file.", message);
 	}
 	
 	@Test
 	/* Caso de Prueba: CP-RFG-02
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEV1 CEV3 CEV5 CEV7 CEV9 CEV12 CEV14 CEV16 CEV19 CEV21 AVL1 CEI24 CEV26 CEI29 AVL3 CEI29 CEV31 AVL5 CEV33 
 	* TÃ©cnica de prueba: Clases de Equivalencia  
-	* Resultado Esperado: Ningn error, Ficheros de salida
+	* Resultado Esperado: Ningun error, Ficheros de salida
 	*/
 	public void testCPRFG_02() throws IOException {
 		AGCManager agcc = new AGCManager();
 		
 		try {
-			File file = new File("/PDS-P3/tests-json/CE-y-VL/CP-RFG-02.json");
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-02-FINAL.json", 40);
+			File file = new File("CP-RFG-02-FI.json");
+			agcc.CalculateDist("CP-RFG-02-FINAL.json", 40);
 			boolean ficheroOk = file.isFile();
 			
 			assertEquals(ficheroOk, true);//comprueba que el fichero existe
@@ -81,11 +84,11 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("", 40);
+			agcc.CalculateDist("CP-RF3-03-FINAL.json", 40);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: invalid input file syntax", message);
+		assertEquals("Error: could not read data from input file.", message);
 	}
 
 	@Test
@@ -98,11 +101,11 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-04-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-04-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: date format does not match <YYYY-MM-DD HH:mm:ss.SSS...>", message);
+		assertEquals("Error: invalid input for Time in JSON.", message);
 	}
 	
 	@Test
@@ -115,11 +118,11 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-05-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-05-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Time has negative values", message);
+		assertEquals("Error: invalid input for Time in JSON.", message);
 	}
 	
 	@Test
@@ -132,45 +135,45 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-06-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-06-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Time does not appear in an observation in the input json file", message);
+		assertEquals("Error: invalid input for Time in JSON.", message);
 	}
 	
 	@Test
 	/* Caso de Prueba: CP-RFG-07
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI11
 	* TÃ©cnica de prueba: Clases de Equivalencia  
-	* Resultado Esperado: Mensaje de error de formato en el fichero de entrada.
+	* Resultado Esperado: De las dos fechas que aparezcan se coge la segunda y si no provoca error de 50 HZ se continua sin error
 	*/
 	public void testCPRFG_07() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-07-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-07-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Time appears more than once in a singular observation", message);
+		assertEquals("", message);
 	}
 	
 	@Test
 	/* Caso de Prueba: CP-RFG-08
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI13 CEI25 CEI30
 	* TÃ©cnica de prueba: Clase de Equivalencia 
-	* Resultado Esperado: EjecuciÃ³n correcta
+	* Resultado Esperado: Error, no se puede leer el archivo correctamente
 	*/
 	public void testCPRFG_08() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RF2-08-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-08-FINAL.json", 20);
 		} catch (AGCException ex) {
-			ex.printStackTrace();
+			message = ex.getMessage();
 		}
-		assertEquals("Error: Separator does not match dot format", message);
+		assertEquals("Error: could not read data from input file.", message);
 
 	}
 	
@@ -178,36 +181,37 @@ public class CalculateDistance_EClasses {
 	/* Caso de Prueba: CP-RFG-09
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI15
 	* TÃ©cnica de prueba: Clase de Equivalencia 
-	* Resultado Esperado: Error en precision
+	* Resultado Esperado: Error en precision de LONGITUD
 	*/
 	public void testCPRFG_09() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-09-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-09-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: #DECIMAL VALUES <= 2", message);
+		assertEquals("Error: less than 7 decimals for LONGITUD in JSON input data.", message);
 	}
 	
+	@Test
 	/* Caso de Prueba: CP-RFG-10
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI18
 	* TÃ©cnica de prueba:  Clase de Equivalencia
-	* Resultado Esperado: EjecuciÃ³n incorrecta
+	* Resultado Esperado: Error de formato de json...falta etiqueta de ACCEL
 	*/
 	public void testCPRFG_10() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-10-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-10-FINAL.json", 20);
 		} catch (AGCException ex) {
-			ex.printStackTrace();
+			message = ex.getMessage();
 		}
-		assertEquals("Error: some ACCEL fields are empty", message);
+		assertEquals("Error: ACCEL_X in JSON input data is not a number.", message);
 		
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-11
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI17
 	* TÃ©cnica de prueba: Clase de Equivalencia
@@ -217,29 +221,29 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-11-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-11-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: repeated ACCEL fields for one or more axis", message);
+		assertEquals(" ", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-12
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL2
 	* TÃ©cnica de prueba:  Valor LÃ­mite
-	* Resultado Esperado: El valor de la latitud en el fichero de entrada no estaÌ� entre -90 y 90
+	* Resultado Esperado: El valor de la latitud en el fichero de entrada no estaÌ� entre -90 y 90 ERROR
 	*/
 	public void testCPRFG_12() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-12-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-12-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not valid Latitude value", message);
+		assertEquals("Error: latitude value forLATITUD cannot be less than -90 or greater than 90.", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-13
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL5
 	* TÃ©cnica de prueba:  Valor LÃ­mite
@@ -249,13 +253,13 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-13-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-13-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not a valid interval", message);
+		assertEquals("", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-14
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL6
 	* TÃ©cnica de prueba:  Valor LÃ­mite
@@ -265,29 +269,29 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-14-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-14-FINAL.json", 80);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not a valid interval", message);
+		assertEquals("Error: time frame to process exceeds experiment length.", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-15
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL7
 	* TÃ©cnica de prueba:  Valor LÃ­mite
-	* Resultado Esperado: La duracioÌ�n concuerda con la ecuacion
+	* Resultado Esperado: Sin Error
 	*/
 	public void testCPRFG_15() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-15-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-15-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not a valid interval", message);
+		assertEquals("", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-16
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL8
 	* TÃ©cnica de prueba:  Valor LÃ­mite
@@ -297,30 +301,30 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-16-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-16-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not a valid interval", message);
+		assertEquals("Error: time values in experiment are not consecutive with a 50Hz rate.", message);
 	}
 	
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-17
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: CEI20
 	* TÃ©cnica de prueba: Clase de Equivalencia
-	* Resultado Esperado: Los caracteres distintos del separador no son nuÌ�meros de 0-9 para ACCEL
+	* Resultado Esperado: Los caracteres distintos del separador no son nuÌ�meros de 0-9 para ACCEL -> No se puede leer el archivo
 	*/
 	public void testCPRFG_17() throws IOException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-17-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-17-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: not valid values for accel", message);
+		assertEquals("Error: could not read data from input file.", message);
 	}
-	
+	@Test
 	/* Caso de Prueba: CP-RFG-18
 	* Clase de Equivalencia o Valor LÃ­mite Asociado: AVL4
 	* TÃ©cnica de prueba:  Valor LÃ­mite
@@ -330,11 +334,11 @@ public class CalculateDistance_EClasses {
 		AGCManager agcc = new AGCManager();
 		String message = "";
 		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RFG-18-FINAL.json", 20);
+			agcc.CalculateDist("CP-RFG-18-FINAL.json", 20);
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Not a valid LONGITUDE value", message);
+		assertEquals("Error: longitude value forLONGITUD cannot be less than -180 or greater than 180.", message);
 	}
 	
 	/*H A S T A      A Q U I      G E N E R A L E S*/
@@ -345,15 +349,15 @@ public class CalculateDistance_EClasses {
 	* TÃ©cnica de prueba: Clases de Equivalencia  
 	* Resultado Esperado: Los calculos sobre distancia son correctas para cada eje generando un JSON acorde con el esperado como salida
 	*/
-	public void testCPRF3_01() throws IOException {
+	public void testCPRF3_01() throws IOException, AGCException {
 		AGCManager agcc = new AGCManager();
 		String message = "";
-		try {
-			agcc.CalculateDist("/PDS-P3/tests-json/CE-y-VL/CP-RF3-01-FINAL.json",  20);
-		} catch (AGCException ex) {
-			message = ex.getMessage();
-		}
-		assertEquals("OK", message);
+	
+		DistByAxes result = agcc.CalculateDist("CP-RF3-01-FINAL.json",  20);
+
+		assertEquals( 60.0 , result.getDist_X(), 0.001f);
+		assertEquals( 0.0017 , result.getDist_Y(), 0.001f);
+		assertEquals( 0.0026 , result.getDist_Z(), 0.001f);
 	}
 	
 	@Test
@@ -370,8 +374,13 @@ public class CalculateDistance_EClasses {
 		} catch (AGCException ex) {
 			message = ex.getMessage();
 		}
-		assertEquals("Error: Invalid output", message);
+		
+		JSONObject data = getRESTData("DIST.json");
+		JSONAssert.assertEquals(
+				  "{foo: 'bar', baz: 'qux'}",
+				  JSONObject.fromObject("{foo: 'bar', baz: 'xyzzy'}"));
 	}
 	
+
 
 }
