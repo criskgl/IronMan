@@ -24,7 +24,14 @@ public interface AgcCalculatorInterface {
 	// AGCException represents AGC -RF-02-S2
 
 	void CalculateDist(String InputFile, int FinalInstant) throws AGCException, IOException;
+	// Generated json file represents AGC -RF-03-S1
+	// String InputFile represents AGC -RF-03-E1
+	// FinalInstant represents AGC -RF-03-E2
+	// AGCException represents AGC -RF-03-S2
 
 	void CalculateVel(String InputFile, int FinalInstant) throws AGCException, IOException;
-	
+	// Generated json file represents AGC -RF-04-S1
+	// String InputFile represents AGC -RF-04-E1
+	// FinalInstant represents AGC -RF-04-E2
+	// AGCException represents AGC -RF-04-S2
 }
