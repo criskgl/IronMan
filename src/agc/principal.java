@@ -17,6 +17,8 @@ public class principal {
 		AGCManager experimento = new AGCManager();
 		experimento.CalculateDist("CP-RF1-01-FINAL.json", 20);
 		
+		AGCManager experimento2 = new AGCManager();
+		experimento.CalculateVel("CP-RF1-01-FINAL.json", 20);
 		
 		
 		//System.out.println("velmedia: "+"\n"+result.getX_Axis().getspeedValue()+ "\n"+result.getY_Axis().getspeedValue()+ "\n"+result.getZ_Axis().getspeedValue());
