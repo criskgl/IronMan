@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CalculateDistance_EClasses" project="hola" tests="20" started="20" failures="0" errors="0" ignored="0">
+  <testsuite name="agc.tests.CalculateDistance_EClasses" time="0.083">
+    <testcase name="testCPRF3_01" classname="agc.tests.CalculateDistance_EClasses" time="0.048"/>
+    <testcase name="testCPRF3_02" classname="agc.tests.CalculateDistance_EClasses" time="0.002"/>
+    <testcase name="testCPRFG_01" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_02" classname="agc.tests.CalculateDistance_EClasses" time="0.002"/>
+    <testcase name="testCPRFG_03" classname="agc.tests.CalculateDistance_EClasses" time="0.0"/>
+    <testcase name="testCPRFG_04" classname="agc.tests.CalculateDistance_EClasses" time="0.002"/>
+    <testcase name="testCPRFG_05" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_06" classname="agc.tests.CalculateDistance_EClasses" time="0.0"/>
+    <testcase name="testCPRFG_07" classname="agc.tests.CalculateDistance_EClasses" time="0.003"/>
+    <testcase name="testCPRFG_08" classname="agc.tests.CalculateDistance_EClasses" time="0.006"/>
+    <testcase name="testCPRFG_09" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_10" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_11" classname="agc.tests.CalculateDistance_EClasses" time="0.003"/>
+    <testcase name="testCPRFG_12" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_13" classname="agc.tests.CalculateDistance_EClasses" time="0.003"/>
+    <testcase name="testCPRFG_14" classname="agc.tests.CalculateDistance_EClasses" time="0.002"/>
+    <testcase name="testCPRFG_15" classname="agc.tests.CalculateDistance_EClasses" time="0.003"/>
+    <testcase name="testCPRFG_16" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_17" classname="agc.tests.CalculateDistance_EClasses" time="0.001"/>
+    <testcase name="testCPRFG_18" classname="agc.tests.CalculateDistance_EClasses" time="0.002"/>
+  </testsuite>
+</testrun>
